@@ -4,7 +4,9 @@ module.exports = (app) => {
     app.get('/api', (req, res) => res.status(200).send({
       status: 'Estou funcionando!',
     }));
-  
+
+    
+    app.get('/api/all_user', usersController.list);
     app.post('/api/user', usersController.create);
-    app.get('/api/users', usersController.list)
+    app.put('/api/user/:id', usersController.update)
   };

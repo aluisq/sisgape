@@ -1,7 +1,8 @@
 const db = require('../models');
 
 module.exports = {
-  create(req, res) { console.log(req.body.data_nasc)
+  //Cria usuário
+  create(req, res) {
     db.Users.create({
     cpf: req.body.cpf,
     nome: req.body.nome,
@@ -20,9 +21,28 @@ module.exports = {
       .then(user => res.status(201).send(user))
       .catch(error => res.status(400).send(error))
     },
-    list(req, res) {
-   db.Users.findAll({})
-    .then(todos => res.status(200).send(todos))
+    //Lista usuários
+  list(req, res) {
+    db.Users.findAll({})
+    .then(users => res.status(200).send(users))
     .catch(error => res.status(400).send(error));
-  },
-};
+    },
+    //Atualiza usuários
+    update(req, res){
+        let user = db.Users.findByPk(req.params.id)
+          .then(user => {
+            if (!user) {
+              return res.status(404).send({
+                message: 'user Not Found',
+              });
+            }
+            return user
+              .update({
+                nome: req.body.nome || user.nome,
+              })
+              .then(() => res.status(200).send(user))  // Send back the updated user.
+              .catch((error) => res.status(400).send(error));
+          })
+          .catch((error) => res.status(400).send(error))
+        }
+      }
