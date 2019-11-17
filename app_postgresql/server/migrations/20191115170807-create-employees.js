@@ -12,7 +12,7 @@ module.exports = {
         type: Sequelize.STRING
       },
       cpf: {
-        type: Sequelize.STRING
+        type: Sequelize.INTEGER
       },
       depID: {
         type: Sequelize.INTEGER,
@@ -44,7 +44,7 @@ module.exports = {
         type: Sequelize.STRING
       },
       cep: {
-        type: Sequelize.STRING
+        type: Sequelize.INTEGER
       },
       complemento: {
         type: Sequelize.STRING
@@ -56,7 +56,7 @@ module.exports = {
         type: Sequelize.STRING
       },
       password: {
-        type: Sequelize.INTEGER
+        type: Sequelize.STRING
       },
       createdAt: {
         allowNull: false,

@@ -2,7 +2,7 @@
 module.exports = (sequelize, DataTypes) => {
   const Users = sequelize.define('Users', {
     nome: DataTypes.STRING,
-    cpf: DataTypes.STRING,
+    cpf: DataTypes.BIGINT,
     data_nasc: DataTypes.DATE,
     sexo: DataTypes.STRING,
     telefone: DataTypes.STRING,
@@ -10,11 +10,11 @@ module.exports = (sequelize, DataTypes) => {
     logradouro: DataTypes.STRING,
     cidade: DataTypes.STRING,
     bairro: DataTypes.STRING,
-    cep: DataTypes.STRING,
+    cep: DataTypes.INTEGER,
     complemento: DataTypes.STRING,
     numero: DataTypes.INTEGER,
     uf: DataTypes.STRING,
-    password: DataTypes.INTEGER
+    password: DataTypes.STRING
   }, {});
   Users.associate = function(models) {
     this.hasMany(models.Loans, {
